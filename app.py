@@ -3,18 +3,18 @@ import sqlite3
 
 app = Flask(__name__)
 
-# Database connection function
+
 def get_db_connection():
     conn = sqlite3.connect('hw13.db')
     conn.row_factory = sqlite3.Row
     return conn
 
-# Home route
+
 @app.route('/')
 def home():
     return redirect(url_for('login'))
 
-# Login route
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -46,7 +46,7 @@ def login():
         </html>
     ''')
 
-# Dashboard route
+
 @app.route('/dashboard')
 def dashboard():
     conn = get_db_connection()
@@ -96,7 +96,7 @@ def dashboard():
         </html>
     ''', students=students, quizzes=quizzes)
 
-# Add Student route
+
 @app.route('/student/add', methods=['GET', 'POST'])
 def add_student():
     if request.method == 'POST':
@@ -129,7 +129,7 @@ def add_student():
         </html>
     ''')
 
-# Add Quiz route
+
 @app.route('/quiz/add', methods=['GET', 'POST'])
 def add_quiz():
     if request.method == 'POST':
@@ -166,7 +166,7 @@ def add_quiz():
         </html>
     ''')
 
-# Add Result route
+
 @app.route('/results/add', methods=['GET', 'POST'])
 def add_result():
     conn = get_db_connection()
@@ -217,7 +217,7 @@ def add_result():
         </html>
     ''', students=students, quizzes=quizzes)
 
-# Student Results route
+
 @app.route('/student/<int:id>')
 def student_results(id):
     conn = get_db_connection()
@@ -250,6 +250,6 @@ def student_results(id):
         </html>
     ''', student=student, results=results)
 
-# Running the app
+
 if __name__ == '__main__':
     app.run(debug=True)

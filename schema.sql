@@ -1,11 +1,11 @@
--- Create Students table
+
 CREATE TABLE IF NOT EXISTS students (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     first_name TEXT NOT NULL,
     last_name TEXT NOT NULL
 );
 
--- Create Quizzes table
+
 CREATE TABLE IF NOT EXISTS quizzes (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     subject TEXT NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS quizzes (
     quiz_date TEXT NOT NULL
 );
 
--- Create Results table
+
 CREATE TABLE IF NOT EXISTS results (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     student_id INTEGER,
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS results (
     FOREIGN KEY (quiz_id) REFERENCES quizzes (id)
 );
 
--- Insert initial data
+
 INSERT INTO students (first_name, last_name) VALUES ('John', 'Smith');
 
 INSERT INTO quizzes (subject, num_questions, quiz_date) 
